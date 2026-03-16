@@ -1,34 +1,51 @@
-# Info
+# python-appgke-wrong
 
-## Author Information
+> **Educational repository for practicing Google Kubernetes Engine (GKE) deployment with GitHub Actions, including intentional mistakes for troubleshooting exercises.**
+
+---
+
+## 👤 Author
 
 - **Name:** Juan Vicente Herrera Ruiz de Alejo
 - **GitHub:** [@juanviz](https://github.com/juanviz)
-- **Role:** Author and Maintainer
 - **Affiliation:** ICAI
 
-## License
-This project is licensed under the MIT License - see the [MIT License](https://opensource.org/licenses/MIT) for details.
+---
 
-# Conversor de Moneda
+## 🧩 Project purpose
 
-Esta es una sencilla aplicación en Python con Flask que convierte una cantidad de dinero en euros a dólares mediante una interfaz web.
+This repository contains a simple Flask application and resources meant to help practice:
 
-## Uso
-Ejecuta el servidor con:
+- Deploying an app to **GKE** using `kubectl` and YAML manifests.
+- Building and pushing Docker images to **Google Container Registry (GCR)**.
+- Automating deployments with **GitHub Actions**.
+- Troubleshooting CI/CD pipelines and deployment issues.
 
-```sh
-python currency_converter.py
-```
+> ⚠️ Some common errors have been intentionally left in the configuration to encourage practical troubleshooting.
 
-Luego, abre tu navegador en `http://127.0.0.1:5000/` y usa la interfaz para realizar conversiones.
+---
 
-## Instalación
-Para ejecutar la aplicación, instala las dependencias con:
+## 📁 Repository structure
 
-```sh
-pip install -r requirements.txt
-```
+- `currency_converter.py` – Flask app (simple web server).
+- `requirements.txt` – Python dependencies.
+- `Dockerfile` – Docker image for the app.
+- `k8s/deployment.yaml` – Kubernetes Deployment manifest.
+- `k8s/service.yaml` – Kubernetes Service manifest.
+- `.github/workflows/deploy.yml` – GitHub Actions workflow to build and deploy to GKE.
+- `templates/index.html` – HTML UI for currency conversion.
 
-## Licencia
-Este proyecto se distribuye bajo la licencia MIT.
+
+#
+## ⚙️ GitHub Actions: deploy to GKE
+
+The main workflow is located at `.github/workflows/deploy.yml` and is triggered on `push` to the `main` branch.
+
+### Required secrets (Repository Settings > Secrets)
+
+- `GCP_PROJECT_ID` – GCP project ID.
+- `GKE_CLUSTER` – GKE cluster name.
+- `GKE_ZONE` – Cluster zone (e.g. `us-central1-a`).
+- `GCP_SA_KEY` – JSON key for a service account with deploy and storage permissions.
+
+

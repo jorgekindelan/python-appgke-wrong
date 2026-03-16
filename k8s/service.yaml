@@ -5,8 +5,8 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: python-appgke
+    app: python-appgkee
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 5000
+      targetPort: 500
